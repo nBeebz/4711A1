@@ -17,9 +17,6 @@ class Application extends CI_Controller {
     function __construct()
     {
 		parent::__construct();
-		$this->load->library('parser');
-		$this->load->helper('url');
-		$this->load->helper('common');
 		$this->load->model('database', 'db');
 		$this->data = array();
 		$this->data['header'] = $this->load->view('modules/_header', '', true);
