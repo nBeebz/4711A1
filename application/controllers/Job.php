@@ -17,7 +17,7 @@ class Job extends Application {
 			$job['company'] = $client->company;
 			$job['rate'] = $client->rate;
 			$job['total'] = floatval($job['rate']) * floatval($job['hours']);
-
+			array_push($jobs, $job);
 		}
 		$params = array(
 			'jobs' => $jobs
