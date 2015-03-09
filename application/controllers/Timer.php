@@ -29,7 +29,7 @@ class Timer extends Application {
 		if (isset($_POST)) {
  			$clientId = intval($this->input->post('client'));
   			$hours = floatval($this->input->post('hours'));
-  			$note = floatval($this->input->post('note'));
+  			$note = $this->input->post('note');
   			if( $hours != 0 && $clientId != 0 )
   				$this->jobs->saveJob( $clientId, $hours, $note );
  		}

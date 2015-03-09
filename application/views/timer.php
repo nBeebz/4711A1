@@ -17,11 +17,18 @@
 
 <div id="saveDialog" style="display:none">
 	{open_form}
+		Client
 		<select name="client">
 			{clients}
 		  		<option value={id}>{company}</option>
 		  	{/clients}
 		</select>
+		<br/>
+		<br/>
+			Note
+			<input type="text" name="note" >
+		<br/>
+		<br/>
 		<input type="hidden" name="hours"/>
 		<input type="submit" />
 	</form>
