@@ -12,8 +12,7 @@ class Timer extends Application {
 	 */
 	public function index()
 	{
-		$params = array( 'clients' => $this->db->all_clients() );
-		$this->data['content'] = $this->parser->parse( 'timer', $params, true );
-		$this->render( current_url(), true );
+		$this->data['content'] = jumbotron( $this->load->view( 'timer', '', true ) );
+		$this->render();
 	}
 }

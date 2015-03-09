@@ -4,11 +4,3 @@
 <td><button style="width:100%">Stop</button></td></tr>
 </table>
 <br/>
-
-<select name="client">
-{clients}
-	<option value="{id}">{name}</option>
-{/clients}
-</select><br/>
-<input type="text" width=120/><br/>
-<input type="submit" />
