@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends Application {
 
 	/**
-	 * Main Index pages. Displays welcome message generated from database.php model file.
+	 * Main Index page. Displays login dialog.
 	 */
 	public function index()
 	{
@@ -56,6 +56,9 @@ class Welcome extends Application {
 		$this->render();
 	}
 
+	/**
+	 * Handles user login
+	 */
 	public function login()
 	{
 		if( isset($_POST) )
@@ -65,16 +68,19 @@ class Welcome extends Application {
 			if( $this->input->post("password") == $user->password )
 			{
 				$this->session->set_userdata(get_object_vars($user));
-				$this->data['content'] = "Welcome $name! Click the above links to get started";
+				$this->data['content'] = "<br/>Welcome $name! Click the above links to get started";
 			}
 			else
-				$this->data['content'] = "Sorry that username/password pair is incorrect";
+				$this->data['content'] = "<br/>Sorry that username/password pair is incorrect";
 			$this->render();
 		}
 		else
 			redirect("welcome");
 	}
 
+	/**
+	 * Handles user logout
+	 */
 	public function logout()
 	{
 		$this->session->unset_userdata("username");

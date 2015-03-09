@@ -1,10 +1,10 @@
 <?php
-/**
- * Timer.php
- * Displays a dummy timer with drop down list of companies and description box.
- */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Timer.php
+ * Displays a timer and allows recorded times to be saved to the database
+ */
 class Timer extends Application {
 
 	/**
@@ -22,6 +22,9 @@ class Timer extends Application {
 		$this->render();
 	}
 
+	/**
+	 * Saves the current recorded time to the database along with the selected clientId
+	 */
 	public function save()
 	{
 		$clientId = 0;

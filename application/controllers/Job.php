@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Job.php
+ * Displays the list of jobs currently saved to the database
+ */
 class Job extends Application {
 
 	/**

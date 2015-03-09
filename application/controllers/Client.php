@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Client.php
+ * Displays and implements CRUD methods for the clients in the database
+ */
 class Client extends Application {
 
 	function __construct(){
@@ -37,12 +41,18 @@ class Client extends Application {
 		$this->render();
 	}
 
+	/**
+	 * Page to add a new client 
+	 */
 	public function add(){
 		$params['open_form'] = form_open( "client/create"  );
 		$this->data['content'] = $this->parser->parse( 'edit', $params, true );
 		$this->render();
 	}
 
+	/**
+	 * Creates client and adds them to the database
+	 */
 	public function create()
 	{
 		if(isset($_POST))
@@ -63,8 +73,15 @@ class Client extends Application {
 		redirect( "users" );
 	}
 
+
+	/**
+	 * Deletes client
+	 */
 	public function delete( $id ){ $this->clients->delete($id); $this->render(); }
 
+	/**
+	 * Page to edit clients in the database
+	 */
 	public function edit( $id )
 	{
 		$params = get_object_vars($this->clients->get($id) );
@@ -74,6 +91,9 @@ class Client extends Application {
 		$this->render();
 	}
 
+	/**
+	 * Saves edited client to the database
+	 */
 	public function save()
 	{
 		if(isset($_POST))
