@@ -50,7 +50,7 @@ class Welcome extends Application {
 		);
 		$this->data['content'] = jumbotron( $this->parser->parse( 'welcome', $params, true ) );
 		$this->data['content'] .= 'Login with the username "admin" and password "P@$$w0rd" to access admin options' ;
-		$this->data['content'] .= 'Login with the username "jlparry" and password "P@$$w0rd" to view as a normal user' ;
+		$this->data['content'] .= '<br/>Login with the username "jlparry" and password "P@$$w0rd" to view as a normal user' ;
 		$this->data['content'] .= logged_in();
 		
 		$this->render();
