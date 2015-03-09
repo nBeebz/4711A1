@@ -32,7 +32,7 @@ class Client extends Application {
 			);
 
 			$this->data['content'] = $this->parser->parse( 'client', $params, true );
-			$this->data['content'] .= "This page is only viewable by an admin"; 
+			$this->data['content'] .= "</br>This page is only viewable by an admin"; 
 		}
 		$this->render();
 	}
@@ -60,7 +60,7 @@ class Client extends Application {
 			}
 			$this->clients->add($record);
 		}
-		$this->render();
+		redirect( "users" );
 	}
 
 	public function delete( $id ){ $this->clients->delete($id); $this->render(); }
@@ -70,6 +70,7 @@ class Client extends Application {
 		$params = get_object_vars($this->clients->get($id) );
 		$params['open_form'] = form_open_multipart( "client/save", array( 'id'=> 'save' ) );
 		$this->data['content'] = $this->parser->parse( 'edit', $params, true );
+		$this->data['content'] .= "</br>Theoretically, image uploads should work, but they currently cause a database length error"; 
 		$this->render();
 	}
 
@@ -90,7 +91,7 @@ class Client extends Application {
 			}
 			$this->clients->update($record);
 		}
-		$this->render();
+		redirect( "users" );
 	}
 
 }

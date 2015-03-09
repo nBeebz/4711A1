@@ -18,6 +18,7 @@ class Timer extends Application {
 		);
 		$this->data['content'] = jumbotron( $this->parser->parse( 'timer', $params, true ) );
 		$this->data['content'] .= "Click the stop button to reveal a save dialog with a list of employers";
+		$this->data['content'] .= "<br/>Timer starts at 15m internally to facilitate debugging";
 		$this->render();
 	}
 
@@ -34,6 +35,6 @@ class Timer extends Application {
   			if( $hours != 0 && $clientId != 0 )
   				$this->jobs->saveJob( $clientId, $hours, $note );
  		}
- 		$this->render();
+ 		redirect( "timer" );
 	}
 }
