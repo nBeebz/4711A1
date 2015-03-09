@@ -44,10 +44,8 @@ class Welcome extends Application {
 	 */
 	public function index()
 	{
-		$html = $this->db->welcome();
-		$html .= make_link_button( base_url('timer'), 'Timer' );
-		$html .= make_link_button( base_url('invoice'), 'Invoice' );
-		$this->data['content'] = $html;
+		$html = "<h1>LOGIN PAGE</h1>";
+		$this->data['content'] = jumbotron( $html );
 		
 		$this->render();
 	}

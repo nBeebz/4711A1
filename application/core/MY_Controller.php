@@ -17,30 +17,27 @@ class Application extends CI_Controller {
     function __construct()
     {
 		parent::__construct();
-		$this->load->model('database', 'db');
-		$this->data = array();
-		$this->data['header'] = $this->load->view('modules/_header', '', true);
-		$this->data['footer'] = $this->load->view('modules/_footer', '', true);
+		$this->data = array();	
+		$this->data['styles'] = base_styles();
+		$this->data['scripts'] = base_scripts();
+		$this->data['content'] = '';
+		$this->data['pages'] = array(
+				array( 'link' => anchor( "timer", "Timer" ) ),
+				array( 'link' => anchor( "job", "Jobs" ) ),
+			);	
     }
     /**
      * Render this page
 	 * @param boolean $locked whether this page should require authentication
      */
-    function render( $locked = false )
+    function render()
     {
-		if( $locked && !logged_in() )
-			$this->data['content'] = $this->parser->parse( 'modules/_validation', array( 'url' => current_url() ), true );
-		
+    	if( admin() )
+    		array_push( $this->data['pages'], array( 'link' => anchor( "client", "Clients" ) ) );
+
 		$this->parser->parse( 'templates/page', $this->data );
 	}
 	
-	// renders this page if user is successfully validated
-	public function validate()
-	{
-		//TODO: ACCESS DB AND VALIDATE PASSWORD
-		$_SESSION['logged'] = true;
-		$this->index();
-	}
 }
 /* End of file MY_Controller.php */
 /* Location: application/core/MY_Controller.php */
