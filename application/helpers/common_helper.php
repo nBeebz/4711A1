@@ -30,7 +30,7 @@ function base_scripts()
 	return $result;
 }
 
-function logged_in()
+function admin()
 {
 	return true;
 }

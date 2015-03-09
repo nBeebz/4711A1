@@ -20,9 +20,10 @@ class Application extends CI_Controller {
 		$this->data = array();	
 		$this->data['styles'] = base_styles();
 		$this->data['scripts'] = base_scripts();
+		$this->data['content'] = '';
 		$this->data['pages'] = array(
 				array( 'link' => anchor( "timer", "Timer" ) ),
-				array( 'link' => anchor( "job", "Jobs" ) )
+				array( 'link' => anchor( "job", "Jobs" ) ),
 			);	
     }
     /**
@@ -31,6 +32,9 @@ class Application extends CI_Controller {
      */
     function render()
     {
+    	if( admin() )
+    		array_push( $this->data['pages'], array( 'link' => anchor( "client", "Clients" ) ) );
+
 		$this->parser->parse( 'templates/page', $this->data );
 	}
 	
