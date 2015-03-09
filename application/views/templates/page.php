@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Nav Bhatti - Assignment #1</title>
+	<title>Nav Bhatti - Assignment #2</title>
 	{styles}
 </head>
 <body>

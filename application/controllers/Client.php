@@ -32,7 +32,7 @@ class Client extends Application {
 			);
 
 			$this->data['content'] = $this->parser->parse( 'client', $params, true );
-
+			$this->data['content'] .= "This page is only viewable by an admin"; 
 		}
 		$this->render();
 	}

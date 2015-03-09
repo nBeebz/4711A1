@@ -44,9 +44,42 @@ class Welcome extends Application {
 	 */
 	public function index()
 	{
-		$html = "<h1>LOGIN PAGE</h1>";
-		$this->data['content'] = jumbotron( $html );
+		var_dump($this->session->userdata());
+		$params = array(
+			'form_open'	=> form_open( 'welcome/login' )
+		);
+		$this->data['content'] = jumbotron( $this->parser->parse( 'welcome', $params, true ) );
+		$this->data['content'] .= 'Login with the username "admin" and password "P@$$w0rd" to access admin options' ;
+		$this->data['content'] .= 'Login with the username "jlparry" and password "P@$$w0rd" to view as a normal user' ;
+		$this->data['content'] .= logged_in();
 		
 		$this->render();
+	}
+
+	public function login()
+	{
+		if( isset($_POST) )
+		{
+			$name = $this->input->post("username");
+			$user = $this->users->get($name);
+			if( $this->input->post("password") == $user->password )
+			{
+				$this->session->set_userdata(get_object_vars($user));
+				$this->data['content'] = "Welcome $name! Click the above links to get started";
+			}
+			else
+				$this->data['content'] = "Sorry that username/password pair is incorrect";
+			$this->render();
+		}
+		else
+			redirect("welcome");
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata("username");
+		$this->session->unset_userdata("password");
+		$this->session->unset_userdata("type");
+		redirect("welcome");
 	}
 }

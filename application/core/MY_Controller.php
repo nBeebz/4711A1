@@ -21,7 +21,8 @@ class Application extends CI_Controller {
 		$this->data['styles'] = base_styles();
 		$this->data['scripts'] = base_scripts();
 		$this->data['content'] = '';
-		$this->data['pages'] = array(
+		$this->data['pages'] = array(	
+				array( 'link' => anchor( "welcome", "Home") ),			
 				array( 'link' => anchor( "timer", "Timer" ) ),
 				array( 'link' => anchor( "job", "Jobs" ) ),
 			);	
@@ -32,6 +33,8 @@ class Application extends CI_Controller {
      */
     function render()
     {
+    	if( logged_in() )
+    		array_unshift( $this->data['pages'], array( 'link' => anchor( "welcome/logout", "Logout" ) ) );
     	if( admin() )
     		array_push( $this->data['pages'], array( 'link' => anchor( "client", "Clients" ) ) );
 

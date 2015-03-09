@@ -30,9 +30,16 @@ function base_scripts()
 	return $result;
 }
 
+function logged_in()
+{
+	$CI =& get_instance();
+	return ( null != $CI->session->userdata('type') );
+}
+
 function admin()
 {
-	return true;
+	$CI =& get_instance();
+	return $CI->session->userdata('type') === 'admin';
 }
 /* End of file common_helper.php */
 /* Location: application/helpers/common_helper.php */

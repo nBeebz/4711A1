@@ -17,6 +17,7 @@ class Timer extends Application {
 			'clients' => $this->clients->all()
 		);
 		$this->data['content'] = jumbotron( $this->parser->parse( 'timer', $params, true ) );
+		$this->data['content'] .= "Click the stop button to reveal a save dialog with a list of employers";
 		$this->render();
 	}
 
